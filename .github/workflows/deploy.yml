@@ -43,7 +43,7 @@ jobs:
             echo "🔹 Cleaning old files..."
             rm -rf /var/www/html/orbit-frontend/*
             echo "🔹 Copying new build files..."
-            scp -r /github/workspace/dist/* ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/var/www/html/orbit-frontend/
+            scp -P 22205 -r /github/workspace/dist ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/var/www/html/orbit-frontend/
             echo "🔹 Restarting Nginx..."
             sudo systemctl restart nginx
             echo "✅ Deploy completed successfully!"
