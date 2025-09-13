@@ -1,0 +1,5 @@
+Copyright (c) 2025 Race Online Limited
+
+All rights reserved. This software and its source code are confidential and 
+proprietary to Race Online Limited. Unauthorized copying, modification, 
+distribution, or use of this software is strictly prohibited.

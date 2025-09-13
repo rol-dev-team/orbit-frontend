@@ -1,0 +1,368 @@
+:root {
+  /* Colors */
+  --color-primary: #036939;
+  --color-secondary: #2e6419;
+  --color-white: #ffffff;
+  --color-background: #ffffff;
+  --color-text-primary: #000000;
+  --color-text-secondary: #acacac;
+  --color-text-sub-title: #5d5d5d;
+  --color-border: #e0e0e0;
+  --color-lime-green: #8BC43F;
+
+  /* Section-specific background colors */
+  --background-light-gray: #f4f4f4;
+  --background-greenish-white: #f0ffe8;
+
+  /* Typography */
+  --font-family-base: Helvetica, Arial, sans-serif;
+  --font-family-heading: Helvetica, Arial, sans-serif;
+  --font-size-base: 14px;
+  --font-size-heading: 50px;
+  --font-size-sub-heading: 16px;
+  --line-height-base: 1.5;
+  --font-weight-normal: 400;
+  --font-weight-medium: 600;
+  --font-weight-bold: 800;
+
+  /* Spacing */
+  --section-padding: 80px 0;
+  --box-padding: 20px;
+  --box-extra-padding: 60px;
+  --spacing-unit: 8px;
+  --spacing-small: calc(var(--spacing-unit) * 2);
+  --spacing-medium: calc(var(--spacing-unit) * 3);
+  --spacing-large: calc(var(--spacing-unit) * 4);
+
+  /* Borders */
+  --border-radius-small: 8px;
+  --border-radius-medium: 10px;
+  --border-radius-large: 20px;
+
+  /* Shadows */
+  --shadow-light: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  --shadow-medium: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  --shadow-heavy: 0 6px 12px rgba(0, 0, 0, 0.2);
+
+  /* Transitions */
+  --transition-duration: 0.3s;
+  --transition-timing-function: ease-in-out;
+
+  /* Breakpoints */
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+
+  /* Additional Typography */
+  --font-size-small: 12px;
+  --font-size-medium: 18px;
+  --font-size-large: 24px;
+
+  /* Links */
+  --link-color: var(--color-primary);
+  --link-hover-color: #2980b9;
+
+  /* Active */
+  --active-text-color: #87eab7;
+  --active-border-color: #badc8f;
+
+  /* Hover */
+  --hover-text-color: #009145;
+  --hover-border-color: #f1f1f1;
+
+  --background-gradient-color: linear-gradient(90deg,
+      rgba(135, 197, 64, 1) 0%,
+      rgba(72, 172, 66, 1) 10%,
+      rgba(3, 145, 69, 1) 50%,
+        rgba(80, 175, 66, 1) 90%,
+      rgba(135, 197, 64, 1) 100%);
+
+  --margin-bottom: 40px;
+
+  /* Custom Themes */
+  --theme-light-background: #fff;
+  --theme-light-text: #333;
+  --theme-dark-background: #1a1a1a;
+  --theme-dark-text: #f4f4f4;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family-base) !important;
+  color: var(--color-text-primary) !important;
+  background-color: var(--color-background) !important;
+  font-size: var(--font-size-base) !important;
+}
+
+ul {
+  list-style: none;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+a {
+  font-weight: var(--font-weight-normal);
+  color: var(--color-primary);
+  text-decoration: none !important;
+}
+
+a:hover {
+  color: var(--hover-text-color);
+}
+
+.active {
+  color: var(--active-text-color) !important;
+  border: 1px solid var(--active-border-color) !important;
+  transition-duration: var(--transition-duration);
+  border-radius: var(--border-radius-small);
+  -webkit-border-radius: var(--border-radius-small);
+  -moz-border-radius: var(--border-radius-small);
+  -ms-border-radius: var(--border-radius-small);
+  -o-border-radius: var(--border-radius-small);
+}
+
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 9999999;
+}
+
+/* Existing rule – keep as is */
+.navbar {
+  height: 100px;
+}
+
+/* Existing rule – no longer used for sub-nav, only main nav */
+.navbar-collapse.show {
+  position: relative;
+  z-index: 1040;
+  padding: 30px;
+  background-color: rgb(241, 241, 241) !important;
+}
+
+/* Existing rule – keep */
+.main-nav {
+  background-color: var(--color-background) !important;
+  position: relative;
+  z-index: 1030;
+}
+
+/* Modified sub-nav rule to allow overflow and horizontal scroll */
+.sub-nav {
+  position: relative;
+  z-index: 1020;
+ 
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.sub-nav {
+  height: 40px !important;
+  background: var(--background-gradient-color) !important;
+  background-color: rgb(241, 241, 241) !important;
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  text-align: center;
+  z-index: 1020; /* from earlier */
+}
+
+/* Base nav-link style */
+.nav-link {
+  color: var(--color-primary) !important;
+  font-weight: var(--font-weight-bold) !important;
+  padding: 2px 30px !important;
+}
+
+/* Sub-nav specific nav-link style */
+.sub-nav .nav-link {
+  color: white !important;
+  font-size: clamp(0.75rem, 2vw, var(--font-size-small));
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding: 2px 16px !important; /* Optional: reduce padding slightly */
+}
+
+/* Previously used for collapsible sub-menu – can be removed or kept for compatibility */
+.sub-nav .navbar-collapse.show .nav-link {
+  color: var(--color-primary) !important;
+}
+
+/* New: Scrollbar customization for horizontal sub-nav */
+.sub-nav .navbar-nav {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important; /* Center-align nav items */
+  align-items: center !important;
+  overflow-x: auto !important;
+  gap: 2rem !important; /* Default spacing between links */
+  scrollbar-width: thin !important;
+  scrollbar-color: #ccc transparent !important;
+  padding: 0 1rem !important; /* Padding to prevent edge clipping */
+  white-space: nowrap !important;
+}
+
+.sub-nav .navbar-nav::-webkit-scrollbar {
+  height: 6px;
+}
+
+.sub-nav .navbar-nav::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 3px;
+}
+
+.heading-title {
+  line-height: 1.2;
+  text-align: center;
+  font-size: var(--font-size-heading);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--margin-bottom);
+}
+
+.sub-title {
+  text-align: center;
+  font-size: var(--font-size-sub-heading);
+  /* font-weight: var(--font-weight-bold); */
+  color: var(--color-text-sub-title);
+}
+
+.custom-button {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.banner-button:hover {
+  background: var(--color-background) !important;
+  color: var(--color-primary) !important;
+}
+
+.custom-button:hover {
+  background: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--active-border-color) !important;
+}
+
+.transparent-btn:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border: 1px solid transparent;
+}
+
+.request-button {
+  background: var(--color-background) !important;
+  color: var(--color-text-primary) !important;
+}
+
+.request-button:hover {
+  background: var(--color-primary) !important;
+  color: var(--color-white) !important;
+}
+
+/* === Switch === */
+.orbit-tabs-container {
+  margin-bottom: 20px;
+}
+
+
+.switch-wrapper {
+  display: inline-flex;
+  background-color: #002305;
+  /* Your color */
+  border-radius: var(--border-radius-large);
+  /* Your variable */
+  /* Your outer padding: 5px top/bottom, 20px left/right. This provides space around the tabs. */
+  padding: 5px 20px;
+  position: relative;
+  margin-bottom: 40px;
+  /* Your margin */
+  -webkit-border-radius: var(--border-radius-large);
+  -moz-border-radius: var(--border-radius-large);
+  -ms-border-radius: var(--border-radius-large);
+  -o-border-radius: var(--border-radius-large);
+}
+
+.orbit-tab {
+  flex-grow: 1;
+  /* Allow tab to grow if there was extra space (less relevant with inline-flex on parent) */
+    flex-shrink: 0;
+    /* Don't shrink tab below its content/padding defined width */
+    flex-basis: auto;
+    /* Base width on content and intrinsic padding */
+    /* REMOVED: width: 50%; */
+  
+    /* ADJUSTED padding for better proportions and less "thin" look */
+    /* Your previous was '4px 0px'. We need more horizontal padding. */
+    /* My first proposal had something like '10px 20px'. Let's try a similar balance. */
+    /* With font-size 14px, try something like: */
+    padding: 8px 30px;
+    /* Example: 8px vertical, 30px horizontal. Adjust 30px to your liking. */
+    /* This increased horizontal padding will make the tabs wider. */
+  background: none;
+  /* Your style */
+  border: none;
+  /* Your style */
+  color: white;
+  /* Your style */
+  font-size: 14px;
+  /* Your font size */
+  cursor: pointer;
+  /* Your style */
+  z-index: 2;
+  /* Ensures text is above the indicator */
+  position: relative;
+  /* Your style */
+  text-align: center;
+  /* Your style */
+  transition: color 0.3s;
+  /* Your style */
+  box-sizing: border-box;
+    /* Good practice */
+    white-space: nowrap;
+    /* Prevents text from wrapping, keeping each tab's text on one line */
+}
+
+.orbit-tab.activee {
+  color: var(--color-text-primary);
+  /* Your variable for active text color */
+  font-weight: var(--font-weight-bold);
+  /* Your variable for active font weight */
+}
+
+.orbit-tab-indicator {
+  position: absolute;
+  /* Your style */
+  /* Vertical sizing based on wrapper's padding, as you liked */
+    top: 10px;
+    bottom: 10px;
+  background-color: #e0ffd3;
+  /* Your indicator color */
+  border-radius: var(--border-radius-large);
+  /* Your variable, matches wrapper */
+  /* left and width will be set by inline styles from the React component */
+    transition: left 0.3s ease, width 0.3s ease, opacity 0.2s ease;
+    /* Smooth animations */
+  z-index: 1;
+  /* Behind tab text */
+  -webkit-border-radius: var(--border-radius-large);
+  -moz-border-radius: var(--border-radius-large);
+  -ms-border-radius: var(--border-radius-large);
+  -o-border-radius: var(--border-radius-large);
+}
+
+/*accordian style*/
+
+.linebar {
+  height: 10px;
+  background: var(--background-gradient-color);
+}
+

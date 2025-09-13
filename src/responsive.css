@@ -1,0 +1,90 @@
+@media (max-width: 768px) {
+  .connection-speed>.container>.row {
+    background-size: contain !important;
+    background-position: 0% 160% !important;
+  }
+
+  .check-orbit-internet-section .box .find-form {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .switch-to-orbit-instantly .logo li img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .check-orbit-internet-section .box .content {
+    padding-left: 2rem;
+    /* Adjust this value as needed for mobile */
+  }
+
+  .we-are-online-section .box .img-box img {
+    height: 260px;
+    margin-top: 90px;
+  }
+
+
+
+  .sub-nav .navbar-nav {
+    gap: 0.5rem !important;
+    /* Reduce spacing between nav items on tablets and small devices */
+  }
+
+
+}
+
+@media (max-width: 480px) {
+  .connection-speed>.container>.row {
+    background-size: contain !important;
+    background-position: 0% 160% !important;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .sub-nav .navbar-nav {
+    justify-content: flex-start !important;
+    /* Align to left on mobile */
+    gap: 0.1rem !important;
+    /* Reduce gap on smaller devices */
+  }
+}
+
+@media (max-width: 767.98px) {
+  .value-added-service .content-box {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .value-added-service .image-box {
+    margin-top: 20px;
+  }
+
+  .value-added-service .image-box img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+@media (max-width: 768px) {
+  .new-user-registration-section .logo-hide {
+    display: none;
+  }
+
+  .connection-speed .box {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  .connection-notes {
+    padding-bottom: 40px;
+  }
+
+  .package-section {
+    padding-top: 20px;
+  }
+
+  .check-orbit-internet-section .box .content {
+    padding-top: 2rem;
+  }
+}
