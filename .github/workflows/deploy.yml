@@ -3,7 +3,7 @@ name: Deploy orbit-frontend React App (Vite)
 on:
   push:
     branches:
-      - main          # Main branch push → deploy production
+      - main          # Deploy to production on main branch push
   pull_request:
     branches:
       - develop       # PR to develop → run build/tests only
@@ -30,19 +30,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Deploy Build Files
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "dist/"
-          target: "/var/www/html/orbit-frontend"
-
-      - name: Restart Nginx
+      # ✅ Deploy & restart Nginx in a single SSH connection
+      - name: Deploy & Restart Nginx
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: sudo systemctl restart nginx
+          script: |
+            echo "🔹 Ensuring target folder exists..."
+            mkdir -p /var/www/html/orbit-frontend
+            echo "🔹 Cleaning old files..."
+            rm -rf /var/www/html/orbit-frontend/*
+            echo "🔹 Copying new build files..."
+            scp -r /github/workspace/dist/* ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/var/www/html/orbit-frontend/
+            echo "🔹 Restarting Nginx..."
+            sudo systemctl restart nginx
+            echo "✅ Deploy completed successfully!"
